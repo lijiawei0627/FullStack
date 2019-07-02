@@ -11,7 +11,10 @@ route.post('/register', (req, res) => {
   users.findOne({email: body.email}, (err, data) => {
     if (err) throw err;
     if (data) {
-      res.json('邮箱已存在')
+      res.json({
+        success: false,
+        msg: '邮箱已存在'
+      })
     } else {
       const password = md5(body.password);
       const avatar = gravatar.url(body.email, {s: '200', r: 'pg', d: 'mm'});
@@ -23,7 +26,10 @@ route.post('/register', (req, res) => {
         identity: body.identity
       }
       users.create(NewUser).then((data) => {
-        return res.json(data)
+        return res.json({
+          success: true,
+          msg: '注册成功'
+        })
       }).catch((err) => {
         console.log(err)
       })
