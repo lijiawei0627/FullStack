@@ -37,6 +37,7 @@ route.post('/login', (req, res) => {
   users.findOne({email: body.email}, (err, data) => {
     if (err) throw err;
     if (data) {
+      console.log(data)
       const password = md5(body.password);
       if (data.password == password) {
         const rule = {id: data.id, name: data.name, avatar: data.avatar, identity: data.identity};
@@ -47,6 +48,8 @@ route.post('/login', (req, res) => {
             token: `Bearer ${token}`
           })
         })
+      } else {
+        res.json({msg: '密码错误'})
       }
     }
   })
