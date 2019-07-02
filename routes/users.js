@@ -29,4 +29,9 @@ route.post('/register', (req, res) => {
   })
 })
 
+route.post('/login', (req, res) => {
+  // console.log(req.body)
+  const body = req.body;
+})
+
 module.exports = route
