@@ -38,7 +38,7 @@ route.post('/register', (req, res) => {
 })
 
 route.post('/login', (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
   const body = req.body;
   users.findOne({email: body.email}, (err, data) => {
     if (err) throw err;
@@ -51,12 +51,20 @@ route.post('/login', (req, res) => {
           if (err) throw err;
           res.json({
             success: true,
-            token: `Bearer ${token}`
+            token: `Bearer ${token}`,
+            msg: '登录成功'
           })
         })
       } else {
-        res.json({msg: '密码错误'})
+        res.json({
+          msg: '密码错误',
+          err: true
+        })
       }
+    } else {
+      res.json({
+        msg: '请先注册该账号'
+      })
     }
   })
 })
