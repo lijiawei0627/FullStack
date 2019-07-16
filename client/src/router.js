@@ -9,8 +9,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/register',
-      component: () => import('./views/Register.vue')
+      redirect: '/index',
+      component: () => import('./views/Index.vue')
     },
     {
       path: '/register',
@@ -25,6 +25,11 @@ export default new Router({
     {
       path: '*',
       component: () => import('./views/404.vue')
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: () => import('./views/Index.vue')
     }
   ]
 })

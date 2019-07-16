@@ -76,7 +76,7 @@ export default {
                 const decoded = jwtDecode(token)
                 console.log(decoded)
                 this.$store.dispatch('setUser', decoded)
-                this.$store.dispatch('setAuthenticated', !isEmpty(decoded))
+                this.$store.dispatch('setAuthenticated', !this.isEmpty(decoded))
                 this.$router.push('/index')
               } else if (data.err) {
                 this.$message({
