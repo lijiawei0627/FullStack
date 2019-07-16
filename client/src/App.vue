@@ -24,3 +24,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+html,
+body,
+#app {
+  width: 100%
+}
+</style>

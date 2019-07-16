@@ -28,8 +28,13 @@ export default new Router({
     },
     {
       path: '/index',
-      name: 'index',
-      component: () => import('./views/Index.vue')
+      component: () => import('./views/Index.vue'),
+      children: [
+        {path: '', component: () => import ('./views/Home.vue')},
+        {path: '/home', name: 'Home', component: () => import ('./views/Home.vue')},
+        {path: '/infoshow', name: 'Infoshow', component: () => import ('./views/InfoShow.vue')},
+        {path: '/fundlist', name: 'FundList', component: () => import ('./views/FundList.vue')}
+      ]
     }
   ]
 })
